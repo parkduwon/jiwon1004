@@ -1,0 +1,60 @@
+plugins {
+    //스프링 부트 이버전 쓸거야
+    id 'org.springframework.boot' version '2.6.1'
+    //스프링 의전성 관리 이버전 쓸거야
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    //자바 쓸거야
+    id 'java'
+    //인텔리제이야 eclipse 아니야
+    id 'idea'
+}
+//모든프로젝트의 메이븐 저장소는 mavenCentral 쓸거야
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+// 지원 프로젝트라는걸 선언하고 멀티 모듈로 멤버-앱, 멤버-도메인을 넣어둘거야
+def jiwonProjects = [
+    project(':member-app'),
+    project(':member-domain')
+]
+
+// 각 멀티 모듈별로 gradle이 따로 있는데 공통적으로 사용하는건 여기에 모아두고 따로 모듈별로 선언하지는 않을 거야
+configure(jiwonProjects) {
+    //아까 플러그인 선언해논거 적용할게
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: "io.spring.dependency-management"
+
+    //도메인 이랑 프로젝트 버전 그리고 소스 컴파일할때 자바버전 여기다가 선언할게
+    group = 'kr.co.jiwon1004'
+    version = '1.0.0'
+    sourceCompatibility = 16
+    targetCompatibility = 16
+
+    dependencies {
+        //롬벅을 선언하는데 이렇게 많이하는 이유는 jpa+querydsl 사용하는데 필요해서야
+        implementation 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok' // 없으면 querydsl annotationProcessors 인해서 lombok 컴파일 안됨
+        testAnnotationProcessor 'org.projectlombok:lombok'
+        testImplementation 'org.projectlombok:lombok'
+
+        //스프링 jpa
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
+        //db mysql 쓸 거니깐
+        implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
+
+        //테스트 해야하니까
+        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
+
+    }
+
+}
+
+dependencies {
+}
+
+test {
+    useJUnitPlatform()
+}

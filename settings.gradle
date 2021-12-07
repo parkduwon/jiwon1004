@@ -1,0 +1,4 @@
+rootProject.name = 'jiwon1004'
+include 'member-app'
+include 'member-domain'
+
