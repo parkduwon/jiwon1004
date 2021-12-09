@@ -16,8 +16,9 @@ allprojects {
 }
 // 지원 프로젝트라는걸 선언하고 멀티 모듈로 멤버-앱, 멤버-도메인을 넣어둘거야
 def jiwonProjects = [
-    project(':member-app'),
-    project(':member-domain')
+    project(':jiwon1004-app-member'),
+    project(':jiwon1004-domain-member'),
+    project(':jiwon1004-domain-signIn')
 ]
 
 // 각 멀티 모듈별로 gradle이 따로 있는데 공통적으로 사용하는건 여기에 모아두고 따로 모듈별로 선언하지는 않을 거야
@@ -45,6 +46,11 @@ configure(jiwonProjects) {
         //db mysql 쓸 거니깐
         implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.27'
 
+        //jackson을 사용해보자
+        implementation group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.13.0'
+
+
+
         //테스트 해야하니까
         testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.1'
 
@@ -53,6 +59,7 @@ configure(jiwonProjects) {
 }
 
 dependencies {
+implementation 'com.fasterxml.jackson.core:jackson-annotations:2.13.0'
 }
 
 test {

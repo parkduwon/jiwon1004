@@ -9,8 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
-            <option value="$PROJECT_DIR$/member-app" />
-            <option value="$PROJECT_DIR$/member-domain" />
+            <option value="$PROJECT_DIR$/jiwon1004-app-member" />
+            <option value="$PROJECT_DIR$/jiwon1004-domain-member" />
+            <option value="$PROJECT_DIR$/jiwon1004-domain-signIn" />
           </set>
         </option>
       </GradleProjectSettings>
