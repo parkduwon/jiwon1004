@@ -1,4 +1,5 @@
 rootProject.name = 'jiwon1004'
+include 'jiwon1004-core-common'
 include 'jiwon1004-app-member'
 include 'jiwon1004-domain-member'
 include 'jiwon1004-domain-signIn'

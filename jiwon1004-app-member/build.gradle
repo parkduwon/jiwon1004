@@ -1,6 +1,6 @@
 dependencies {
     //컴포넌트에 포함될 모듈들
+    implementation project(':jiwon1004-core-common')
     implementation project(':jiwon1004-domain-member')
     implementation project(':jiwon1004-domain-signIn')
-
 }

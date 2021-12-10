@@ -1,5 +1,6 @@
 package kr.co.jiwon1004.domain.signIn.entity;
 
+import kr.co.jiwon1004.common.entity.BaseTimeEntity;
 import lombok.*;
 
 import javax.persistence.*;

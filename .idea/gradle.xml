@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/jiwon1004-app-member" />
+            <option value="$PROJECT_DIR$/jiwon1004-core-common" />
             <option value="$PROJECT_DIR$/jiwon1004-domain-member" />
             <option value="$PROJECT_DIR$/jiwon1004-domain-signIn" />
           </set>

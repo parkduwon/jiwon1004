@@ -1,8 +1,10 @@
 package kr.co.jiwon1004.domain.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import kr.co.jiwon1004.common.codes.Gender;
+import kr.co.jiwon1004.common.entity.BaseTimeEntity;
 import kr.co.jiwon1004.domain.signIn.entity.SignIn;
 import lombok.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -27,7 +29,8 @@ public class Member extends BaseTimeEntity {
 	private String birth;
 
 	@Column(length = 1)
-	private String gender;
+	@Enumerated(EnumType.STRING)
+	private Gender gender;
 
 	@Column(length = 100)
 	private String email;
@@ -44,7 +47,7 @@ public class Member extends BaseTimeEntity {
 	private SignIn signIn;
 
 	@Builder
-	public Member(String email, String memberName, String phone, String birth, String gender, SignIn signIn) {
+	public Member(String email, String memberName, String phone, String birth, Gender gender, SignIn signIn) {
 		this.email = email;
 		this.memberName = memberName;
 		this.phone = phone;

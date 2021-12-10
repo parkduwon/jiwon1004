@@ -1,4 +1,4 @@
-package kr.co.jiwon1004.domain.member.entity;
+package kr.co.jiwon1004.common.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
