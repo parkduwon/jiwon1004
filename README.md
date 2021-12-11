@@ -1,9 +1,9 @@
 # jiwon1004
-MSA rest api project
+MSA로 구현한 회원관리 어플리캐이션을 만들어 봅니다.
 
-MSA + TDDt를 이용한 백엔드 서버를 만들어 공유하는 깃허브입니다.
+MSA + TDD를 이용한 백엔드 서버를 만들어 공유하는 깃허브입니다.
 
-사용한 기능은 Springboot + Java + JPA + mysql + redis + jwt + spring security
+Springboot + Java + JPA + Mysql + Redis + jwt + Spring Security로 구성했습니다.
 
 가장 기본인 회원가입, 로그인, 회원조회 부터 시작할게요.
 

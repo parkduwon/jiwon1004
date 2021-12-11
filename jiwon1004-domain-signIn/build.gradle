@@ -2,4 +2,5 @@ bootJar.enabled = false
 jar.enabled = true
 dependencies {
     implementation project(':jiwon1004-core-common')
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
 }

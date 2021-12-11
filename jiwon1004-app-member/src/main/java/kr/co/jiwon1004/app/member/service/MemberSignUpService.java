@@ -13,16 +13,20 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Service
+@RequiredArgsConstructor
 @Slf4j
 public class MemberSignUpService {
+
 	private final MemberRepository memberRepository;
 	private final SignInRepository signInRepository;
 
-	public void signUpMember(MemberSignUpRequest memberSignUpRequest) {
+	@Transactional
+	public String memberSignUp(MemberSignUpRequest memberSignUpRequest) {
+		String result = "SUCCESS";
 		SignIn signIn = convertSignInWhenSignUP(memberSignUpRequest);
 		Member member = Member.builder()
 				.memberName(memberSignUpRequest.getName())
@@ -31,9 +35,9 @@ public class MemberSignUpService {
 				.birth(memberSignUpRequest.getBirth())
 				.signIn(signIn)
 				.build();
-
 		signInRepository.save(signIn);
 		memberRepository.save(member);
+		return(result);
 	}
 
 	public SignIn convertSignInWhenSignUP(MemberSignUpRequest memberSignUpRequest) {

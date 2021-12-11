@@ -16,11 +16,12 @@ public class MemberSignUpRequest {
 	@Size(max = 50)
 	private String userId;
 
+	@NotNull
+	@Size(max = 40)
+	private String password;
+
 	@Size(max = 50)
 	private String email;
-
-	@NotNull
-	private String password;
 
 	@NotBlank
 	@Size(max = 100)
@@ -32,12 +33,12 @@ public class MemberSignUpRequest {
 
 	@NotNull
 	@Size(max = 8)
-	@NumberFormat(style = NumberFormat.Style.NUMBER)
 	private String birth;
 
 	@NotNull
 	@Size(max = 11)
 	private String phone;
+
 
 	public void setGender(String gender){
 		this.gender = Gender.valueOf(gender);

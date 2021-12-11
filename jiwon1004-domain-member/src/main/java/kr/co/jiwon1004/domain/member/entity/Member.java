@@ -28,7 +28,7 @@ public class Member extends BaseTimeEntity {
 	@Column(length = 8)
 	private String birth;
 
-	@Column(length = 1)
+	@Column(length = 5)
 	@Enumerated(EnumType.STRING)
 	private Gender gender;
 

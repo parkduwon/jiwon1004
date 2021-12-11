@@ -3,4 +3,5 @@ jar.enabled = true
 dependencies {
     implementation project(':jiwon1004-core-common')
     implementation project(':jiwon1004-domain-signIn')
+    implementation 'org.junit.jupiter:junit-jupiter-api:5.8.1'
 }
