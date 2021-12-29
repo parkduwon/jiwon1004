@@ -1,15 +1,17 @@
 package kr.co.jiwon1004.common.codes;
 
+import org.apache.commons.lang3.StringUtils;
+
 public enum Gender {
-	MAN("남자"),
-	WOMEN("여자");
+	MAN,
+	WOMEN;
 
-	private final String value;
-
-	Gender(String value) {
-		this.value = value;
-	}
-	public String getValue() {
-		return this.value;
+	public static Gender getValue(String value) {
+		for(Gender gender : values()) {
+			if(StringUtils.equals(gender.name(), value)) {
+				return gender;
+			}
+		}
+		return null;
 	}
 }

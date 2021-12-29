@@ -36,14 +36,22 @@ public class SignIn extends BaseTimeEntity implements Serializable {
 	private String roles;
 	@Column(name = "member_name", length = 100)
 	private String memberName;
+	@Column(name = "temp")
 	private boolean isTempPassword;				//임시비번여부
+	@Column(name = "expired")
 	private boolean isAccountNonExpired;		//계정만료여부
+	@Column(name = "locked")
 	private boolean isAccountNonLocked;			//계정잠김여부
+	@Column(name = "password_expired")
 	private boolean isCredentialsNonExpired;	//비밀번호만료여부
+	@Column(name = "enabled")
 	private boolean isEnabled;					//활성화계정여부
 
+	@Column(name = "sign_in_cnt")
 	private int signInCnt;						//계정로그인횟수
+	@Column(name = "sign_in_fail_cnt")
 	private int signInFailCnt;					//계정로그인실패횟수
+	@Column(name = "pw_expire_dt")
 	private LocalDateTime pwExpireDt;           //패스워드 만료기간
 
 	// ENUM으로 안하고 ,로 해서 구분해서 ROLE을 입력 -> 그걸 파싱!!

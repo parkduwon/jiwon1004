@@ -41,7 +41,7 @@ public class MemberSignUpRequest {
 
 
 	public void setGender(String gender){
-		this.gender = Gender.valueOf(gender);
+		this.gender = Gender.getValue(gender);
 	}
 
 }

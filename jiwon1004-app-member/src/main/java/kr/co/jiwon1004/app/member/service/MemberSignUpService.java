@@ -25,8 +25,7 @@ public class MemberSignUpService {
 	private final SignInRepository signInRepository;
 
 	@Transactional
-	public String memberSignUp(MemberSignUpRequest memberSignUpRequest) {
-		String result = "SUCCESS";
+	public void memberSignUp(MemberSignUpRequest memberSignUpRequest) {
 		SignIn signIn = convertSignInWhenSignUP(memberSignUpRequest);
 		Member member = Member.builder()
 				.memberName(memberSignUpRequest.getName())
@@ -37,7 +36,6 @@ public class MemberSignUpService {
 				.build();
 		signInRepository.save(signIn);
 		memberRepository.save(member);
-		return(result);
 	}
 
 	public SignIn convertSignInWhenSignUP(MemberSignUpRequest memberSignUpRequest) {

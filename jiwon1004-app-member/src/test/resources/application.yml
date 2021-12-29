@@ -1,0 +1,43 @@
+spring:
+  profiles:
+    active: local
+---
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  # 디비설정
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost/db_jiwon1004?serverTimezone=Asia/Seoul
+    username: jiwon1004
+    password: qwer1234
+    hikari:
+      maximum-pool-size: 10
+      max-lifetime: 15000
+      data-source-properties:
+        cachePrepStmts: true
+        prepStmtCacheSize: 250
+        prepStmtCacheSqlLimit: 2048
+        useServerPrepStmts: true
+  jpa:
+    hibernate:
+      ddl-auto: update #create update none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+test:
+  member:
+    userId: jiwon1004
+    name: 박지원
+    email: jiwon1004@naver.com
+    password: qwer1234
+    birth: 20191004
+    gender: WOMEN
+    phone: 01099999999
