@@ -26,7 +26,6 @@ public class MemberSignUpService {
 
 	@Transactional
 	public void memberSignUp(MemberSignUpRequest memberSignUpRequest) {
-		System.out.println("여기는 서비스인데 여기오나?");
 		SignIn signIn = convertSignInWhenSignUP(memberSignUpRequest);
 		String memberId = RandomStringUtils.randomAlphanumeric(10);
 		Member member = Member.builder()

@@ -2,6 +2,7 @@ package kr.co.jiwon1004.app.member.service;
 
 import kr.co.jiwon1004.app.member.dto.response.MemberSearchResponse;
 import kr.co.jiwon1004.domain.member.dto.request.MemberRequest;
+import kr.co.jiwon1004.domain.member.dto.request.MemberSearchRequest;
 import kr.co.jiwon1004.domain.member.entity.Member;
 import kr.co.jiwon1004.domain.member.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
@@ -18,8 +19,8 @@ public class MemberService {
 	private final MemberRepository memberRepository;
 
 	@Transactional(readOnly = true)
-	public MemberSearchResponse getMembers(MemberRequest memberRequest) {
-		Member member = memberRepository.findMemberByMemberId(memberRequest.getMemberId())
+	public MemberSearchResponse getMembers(MemberSearchRequest memberSearchRequest) {
+		Member member = memberRepository.findMemberByMemberId(memberSearchRequest.getMemberId())
 				.orElseThrow(()-> new UsernameNotFoundException("멤버를 찾을 수 없습니다."));
 		return MemberSearchResponse.builder()
 				.memberName(member.getMemberName())

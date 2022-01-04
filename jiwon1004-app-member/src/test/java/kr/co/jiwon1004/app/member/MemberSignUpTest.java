@@ -1,8 +1,6 @@
 package kr.co.jiwon1004.app.member;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.jiwon1004.app.member.dto.response.MemberSearchResponse;
-import kr.co.jiwon1004.app.member.service.MemberSignUpService;
 import kr.co.jiwon1004.domain.member.repository.MemberRepository;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -17,12 +15,8 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.annotation.PostConstruct;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.HashMap;
-import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
@@ -32,27 +26,27 @@ import static org.assertj.core.api.Assertions.fail;
 public class MemberSignUpTest {
 
     @Autowired
-    MemberSignUpService memberSignUpService;
-
-    @Autowired
-    MemberRepository memberRepository;
-
-    @Autowired
     MemberTestDataHelper memberTestDataHelper;
 
     @Autowired
     TestRestTemplate restTemplate;
 
-    URL base;
+    static URL base;
 
-    @LocalServerPort int port;
+    static int port;
 
-    String memberId;
+    static String memberId;
 
-    @PostConstruct
-    void setUp() throws MalformedURLException {
+    @BeforeAll
+    static void setUp(@LocalServerPort int instancePort) throws MalformedURLException {
+        port = instancePort;
         base = new URL("http://localhost:" + port);
         memberId = "testMember";
+    }
+
+    @AfterAll
+    static void destroy(@Autowired MemberRepository memberRepository) {
+        memberRepository.findMemberByMemberId(memberId).ifPresent(memberRepository::delete);
     }
 
     @Test

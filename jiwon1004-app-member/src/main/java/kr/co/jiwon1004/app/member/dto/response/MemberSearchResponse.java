@@ -6,7 +6,6 @@ import kr.co.jiwon1004.common.codes.Gender;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
 

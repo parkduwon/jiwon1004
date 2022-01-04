@@ -15,7 +15,6 @@ public class MemberSignUpController {
 
 	@PostMapping("/open/signUp")
 	public String signUP(@RequestBody MemberSignUpRequest memberSignUpRequest) {
-		System.out.println("여기는 콘트롤러인데 여기오나?");
 		memberSignUpService.memberSignUp(memberSignUpRequest);
 		return "SUCCESS";
 	}
