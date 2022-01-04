@@ -21,13 +21,16 @@ import java.util.List;
 @Slf4j
 public class MemberSignUpService {
 
-	private final MemberRepository memberRepository;
 	private final SignInRepository signInRepository;
+	private final MemberRepository memberRepository;
 
 	@Transactional
 	public void memberSignUp(MemberSignUpRequest memberSignUpRequest) {
+		System.out.println("여기는 서비스인데 여기오나?");
 		SignIn signIn = convertSignInWhenSignUP(memberSignUpRequest);
+		String memberId = RandomStringUtils.randomAlphanumeric(10);
 		Member member = Member.builder()
+				.memberId(memberSignUpRequest.getMemberId() == null ? memberId : memberSignUpRequest.getMemberId())
 				.memberName(memberSignUpRequest.getName())
 				.email(memberSignUpRequest.getEmail())
 				.gender(memberSignUpRequest.getGender())
@@ -44,6 +47,7 @@ public class MemberSignUpService {
 		return SignIn.builder()
 				.userId(memberSignUpRequest.getUserId())
 				.salt(salt)
+				.memberName(memberSignUpRequest.getName())
 				.password(passwordEncoder.encode(memberSignUpRequest.getPassword().concat(salt)))
 				.isTempPassword(false)
 				.isEnabled(true)

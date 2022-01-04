@@ -25,6 +25,11 @@ public class Member extends BaseTimeEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	//멤버의 고유 id 외부노출 안한다.
+	@Column(name = "member_id", length = 10, unique = true, nullable = false, updatable = false)
+	@JsonIgnore
+	private String memberId;
+
 	@Column(length = 8)
 	private String birth;
 
@@ -42,13 +47,14 @@ public class Member extends BaseTimeEntity {
 	private String memberName;
 
 	@JsonIgnore
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="sign_in", nullable = false, unique = true, updatable = false)
 	private SignIn signIn;
 
 	@Builder
-	public Member(String email, String memberName, String phone, String birth, Gender gender, SignIn signIn) {
+	public Member(String email, String memberId, String memberName, String phone, String birth, Gender gender, SignIn signIn) {
 		this.email = email;
+		this.memberId = memberId;
 		this.memberName = memberName;
 		this.phone = phone;
 		this.birth = birth;

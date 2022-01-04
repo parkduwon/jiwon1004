@@ -50,6 +50,7 @@ configure(jiwonProjects) {
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa'
         implementation group: 'org.springframework.boot', name: 'spring-boot-starter-security'
         implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor'
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web'
 
         //db mysql 쓸 거니깐
         implementation group: 'mysql', name: 'mysql-connector-java', version: '8.0.25'
@@ -63,13 +64,8 @@ configure(jiwonProjects) {
         //util RandomStringUtil.java 등 사용
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
 
-        //Configuration annotation 사용
-        annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
-
         //테스트 해야하니까
-        testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.8.2'
         testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
-
 
     }
 
