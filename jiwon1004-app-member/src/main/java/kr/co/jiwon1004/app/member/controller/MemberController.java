@@ -20,7 +20,7 @@ public class MemberController {
 		return memberService.getMembers(memberSearchRequest);
 	}
 
-	@PutMapping(path="/members")
+	@PatchMapping(path="/members")
 	public String saveMember(@RequestBody @Valid MemberRequest memberRequest) {
 		memberService.saveMember(memberRequest);
 		return "SUCCESS";

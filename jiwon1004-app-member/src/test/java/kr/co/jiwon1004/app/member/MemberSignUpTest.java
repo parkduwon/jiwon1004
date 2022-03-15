@@ -71,7 +71,7 @@ public class MemberSignUpTest {
         ResponseEntity<String> response = restTemplate.exchange(base+"/open/signUp", HttpMethod.POST, entity, String.class);
 
         //Then
-        assertThat("SUCCESS").isEqualTo(response.getBody());
+        assertThat(response.getBody()).isEqualTo("SUCCESS");
         System.out.println(response.getBody());
 
     }
@@ -117,10 +117,10 @@ public class MemberSignUpTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(jsonObject.toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(base+"/members", HttpMethod.PUT, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(base+"/members", HttpMethod.PATCH, entity, String.class);
 
         //Then
-        assertThat("SUCCESS").isEqualTo(response.getBody());
+        assertThat(response.getBody()).isEqualTo("SUCCESS");
     }
 
     @Test
@@ -139,9 +139,8 @@ public class MemberSignUpTest {
         ResponseEntity<String> response = restTemplate.exchange(base+"/members", HttpMethod.DELETE, entity, String.class);
 
         //Then
-        assertThat("SUCCESS").isEqualTo(response.getBody());
+        assertThat(response.getBody()).isEqualTo("SUCCESS");
 
     }
-
 
 }

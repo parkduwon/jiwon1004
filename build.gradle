@@ -63,6 +63,8 @@ configure(jiwonProjects) {
 
         //util RandomStringUtil.java 등 사용
         implementation group: 'org.apache.commons', name: 'commons-lang3', version: '3.12.0'
+        //restapi patch 사용
+        implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
 
         //테스트 해야하니까
         testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test'
