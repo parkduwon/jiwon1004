@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,15 +21,15 @@ public class MemberController {
 		return memberService.getMembers(memberSearchRequest);
 	}
 
-	@PatchMapping(path="/members")
-	public String saveMember(@RequestBody @Valid MemberRequest memberRequest) {
-		memberService.saveMember(memberRequest);
+	@PatchMapping(path="/members/{memberId}")
+	public String saveMember(@PathVariable(value = "memberId") @NotEmpty String memberId, @RequestBody @Valid MemberRequest memberRequest) {
+		memberService.saveMember(memberId, memberRequest);
 		return "SUCCESS";
 	}
 
-	@DeleteMapping(path="/members")
-	public String deleteMember(@RequestBody @Valid MemberRequest memberRequest) {
-		memberService.deleteMember(memberRequest);
+	@DeleteMapping(path="/members/{memberId}")
+	public String deleteMember(@PathVariable(value = "memberId") @NotEmpty String memberId) {
+		memberService.deleteMember(memberId);
 		return "SUCCESS";
 	}
 }

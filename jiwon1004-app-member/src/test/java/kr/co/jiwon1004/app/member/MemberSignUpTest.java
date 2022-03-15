@@ -85,7 +85,7 @@ public class MemberSignUpTest {
         params.add("memberId", memberId);
 
         UriComponents uri = UriComponentsBuilder
-                .fromHttpUrl("http://localhost:" + port+"/members")
+                .fromHttpUrl(base + "/members")
                 .queryParams(params)
                 .build();
 
@@ -109,7 +109,6 @@ public class MemberSignUpTest {
     void saveMember() throws JSONException {
         //Given
         JSONObject jsonObject = new JSONObject();
-        jsonObject.put("memberId", memberId);
         jsonObject.put("email", "change@email.com");
         System.out.println(memberId);
 
@@ -117,7 +116,7 @@ public class MemberSignUpTest {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         HttpEntity<String> entity = new HttpEntity<>(jsonObject.toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(base+"/members", HttpMethod.PATCH, entity, String.class);
+        ResponseEntity<String> response = restTemplate.exchange(base+"/members/" + memberId, HttpMethod.PATCH, entity, String.class);
 
         //Then
         assertThat(response.getBody()).isEqualTo("SUCCESS");
@@ -126,17 +125,15 @@ public class MemberSignUpTest {
     @Test
     @DisplayName("4. 회원삭제")
     @Order(4)
-    void deleteMember() throws JSONException {
+    void deleteMember() {
         //Given
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("memberId", memberId);
         System.out.println(memberId);
 
         //When
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        HttpEntity<String> entity = new HttpEntity<>(jsonObject.toString(), headers);
-        ResponseEntity<String> response = restTemplate.exchange(base+"/members", HttpMethod.DELETE, entity, String.class);
+        HttpEntity<Object> entity = new HttpEntity<>(headers);
+        ResponseEntity<String> response = restTemplate.exchange(base+"/members/" + memberId, HttpMethod.DELETE, entity, String.class);
 
         //Then
         assertThat(response.getBody()).isEqualTo("SUCCESS");

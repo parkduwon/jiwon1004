@@ -12,10 +12,6 @@ import javax.validation.constraints.Size;
 public class MemberRequest {
 
 	@Size(max = 50)
-	@NotNull
-	private String memberId;
-
-	@Size(max = 50)
 	private String email;
 
 	@Size(max = 100)

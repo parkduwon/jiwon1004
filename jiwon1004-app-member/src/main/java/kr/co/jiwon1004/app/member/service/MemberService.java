@@ -34,8 +34,8 @@ public class MemberService {
 	}
 
 	@Transactional
-	public void saveMember(MemberRequest memberRequest) {
-		memberRepository.findMemberByMemberId(memberRequest.getMemberId()).ifPresentOrElse(
+	public void saveMember(String memberId, MemberRequest memberRequest) {
+		memberRepository.findMemberByMemberId(memberId).ifPresentOrElse(
 			member -> {
 				member.setEmail(memberRequest.getEmail());
 			},
@@ -46,8 +46,8 @@ public class MemberService {
 	}
 
 	@Transactional
-	public void deleteMember(MemberRequest memberRequest) {
-		memberRepository.findMemberByMemberId(memberRequest.getMemberId()).ifPresentOrElse(
+	public void deleteMember(String memberId) {
+		memberRepository.findMemberByMemberId(memberId).ifPresentOrElse(
 				memberRepository::delete,
 				() -> {
 					throw new UsernameNotFoundException("멤버를 찾을 수 없습니다.");
